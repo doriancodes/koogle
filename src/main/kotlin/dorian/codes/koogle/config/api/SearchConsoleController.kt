@@ -16,7 +16,7 @@ class SearchConsoleController (private val pageRepository: PageRepository) {
 
     @GetMapping
     fun searchConsole(model: Model): String {
-        model["title"] = "Search Console"
+        model["title"] = "Koogle Search Console"
         return "search-console"
     }
 
@@ -24,6 +24,7 @@ class SearchConsoleController (private val pageRepository: PageRepository) {
     fun insert(@RequestParam url: String, model: Model): String {
         model["title"] = "Search Console"
         val newPages: List<Page> = crawler.crawler(url)
+        println(newPages[0].url)
         newPages.map {
             page -> pageRepository.save(page)
         }.map { it.render() }
