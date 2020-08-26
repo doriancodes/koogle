@@ -1,0 +1,15 @@
+{{> header}}
+
+<h1>Koogle</h1>
+
+<div class="container">
+    <form action="/search-console" method="post">
+        <div class="form-group">
+            <label for="url">Url:</label> <input type="text"
+                                                           class="form-control" id="url" name="url" />
+        </div>
+        <input type="text" placeholder="Search..">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{{> footer}}

@@ -1,0 +1,31 @@
+{{> header}}
+
+{{> home}}
+
+
+<div class="pages" style="overflow-x:auto;">
+
+    <table style="width:100%">
+        <caption>Pages</caption>
+        <tr>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Text</th>
+            <th>Slug</th>
+        </tr>
+        {{#pages}}
+
+        <tr>
+            <td><a href="{{url}}">{{title}}</a></td>
+            <td>{{url}}</td>
+            <td>{{text}}</td>
+            <td>{{slug}}</td>
+
+        </tr>
+        {{/pages}}
+
+    </table>
+
+</div>
+
+{{> footer}}
