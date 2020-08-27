@@ -2,6 +2,7 @@ package dorian.codes.koogle.config.api
 
 import dorian.codes.koogle.page.Page
 import dorian.codes.koogle.page.PageRepository
+import dorian.codes.koogle.page.PageType
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set

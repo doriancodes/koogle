@@ -25,6 +25,8 @@ class SearchConsoleController (private val pageRepository: PageRepository) {
         model["title"] = "Search Console"
         val newPages: List<Page> = crawler.crawler(url)
         println(newPages[0].url)
+        println(newPages[0].type)
+
         newPages.map {
             page -> pageRepository.save(page)
         }.map { it.render() }
