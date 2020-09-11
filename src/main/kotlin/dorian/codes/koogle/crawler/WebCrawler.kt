@@ -7,18 +7,13 @@ import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
 
 
-public class WebCrawler {
+class WebCrawler {
 
     fun crawler(url: String): List<Page> {
         print("Fetching %s...", url)
         val doc: Document = Jsoup.connect(url).get()
 
         return extractPages(doc);
-    }
-
-    fun getDocument(url: String): Document {
-        return Jsoup.connect(url).get()
-
     }
 
     fun crawlerDemo(url: String) {
@@ -43,39 +38,5 @@ public class WebCrawler {
         }
     }
 
-    private fun print(msg: String, vararg args: Any) {
-        println(String.format(msg, *args))
-    }
-
-    private fun trim(s: String, width: Int): String? {
-        return if (s.length > width) s.substring(0, width - 1) + "." else s
-    }
-
-    fun extractPages(document: Document): List<Page> {
-
-        return maps.flatMap {
-            (key, value) -> renderPage(key, document)
-        }
-        /**
-        return document.select("a[href]").map { element ->
-            Page(url = element.attr("abs:href"), title = element.attr("title"), text = element.text(), type = PageType.LINK)
-        }**/
-    }
-
-    private fun renderPage(pageType: PageType, document: Document): List<Page> {
-        if (pageType == PageType.LINK) {
-
-            return document.select(maps[pageType]).map { element ->
-                Page(url = element.attr("abs:href"), title = element.attr("title"), text = element.text(), type = pageType)
-            }
-        } else {
-            return document.select(maps[pageType]).map { element ->
-                Page(url = element.attr("abs:href"), title = element.tagName(), text = element.attr("rel"), type = pageType)
-
-            }
-        }
-    }
-
-    private val maps: Map<PageType, String> = mapOf(PageType.LINK to "a[href]", PageType.IMPORT to "link[href]")
 
 }

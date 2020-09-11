@@ -1,4 +1,4 @@
-package dorian.codes.koogle.config.api
+package dorian.codes.koogle.api
 
 import dorian.codes.koogle.crawler.WebCrawler
 import dorian.codes.koogle.page.Page
