@@ -1,8 +1,9 @@
 package dorian.codes.koogle.api
 
 import dorian.codes.koogle.crawler.WebCrawler
-import dorian.codes.koogle.page.Page
-import dorian.codes.koogle.page.PageRepository
+import dorian.codes.koogle.pages.Page
+import dorian.codes.koogle.pages.PageRepository
+import dorian.codes.koogle.pages.defaultPage
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 
 @Controller
 @RequestMapping("/search-console")
-class SearchConsoleController (private val pageRepository: PageRepository) {
+class SearchConsoleController(private val pageRepository: PageRepository) {
 
     val crawler: WebCrawler = WebCrawler()
 
@@ -23,13 +24,14 @@ class SearchConsoleController (private val pageRepository: PageRepository) {
     @PostMapping
     fun insert(@RequestParam url: String, model: Model): String {
         model["title"] = "Search Console"
-        val newPages: List<Page> = crawler.crawler(url)
-        println(newPages[0].url)
-        println(newPages[0].type)
-
+        //val newPages: List<Page> = crawler.crawler(url)
+        //println(newPages[0].url)
+        //println(newPages[0].type)
+        pageRepository.save(crawler.getContentOfPage(url)).render()
+        /**
         newPages.map {
-            page -> pageRepository.save(page)
-        }.map { it.render() }
+        page -> pageRepository.save(page)
+        }.map { it.render() }*/
         return "search-console"
     }
 

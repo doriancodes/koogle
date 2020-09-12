@@ -1,7 +1,7 @@
 package dorian.codes.koogle.crawler
 
-import dorian.codes.koogle.page.Page
-import dorian.codes.koogle.page.PageType
+import dorian.codes.koogle.pages.Page
+import dorian.codes.koogle.urls.Url
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
@@ -9,12 +9,12 @@ import org.jsoup.select.Elements
 
 class WebCrawler {
 
-    fun crawler(url: String): List<Page> {
+    fun crawler(url: String): List<Url> {
         print("Fetching %s...", url)
         val validatedUrl: String = validateUrl(url)
         val doc: Document = Jsoup.connect(validatedUrl).get()
 
-        return extractPages(doc);
+        return extractUrls(doc, url);
     }
 
     fun crawlerDemo(url: String) {
@@ -37,6 +37,12 @@ class WebCrawler {
         for (link in links) {
             print(" * a: <%s>  (%s)", link.attr("abs:href"), trim(link.text(), 35)!!)
         }
+    }
+
+    fun getContentOfPage(url: String): Page {
+        val validatedUrl: String = validateUrl(url)
+        val doc: Document = Jsoup.connect(validatedUrl).get()
+        return Page(url, doc.title(), doc.text().substring(0, 250))
     }
 
 
