@@ -12,19 +12,21 @@ class KoogleInitConfiguration {
 
     @Bean
     fun databaseInitializer(pageRepository: PageRepository) = ApplicationRunner {
-        val wikipedia = Page(url = "https://www.wikipedia.org/", title = "Wikipedia", text = "<html>\n</html>")
-
-        val google = Page(url = "https://www.google.com/", title = "Google", text = "<html>\n</html>")
+        val wikipedia = Page(url = "https://www.wikipedia.org/", title = "Wikipedia", text = "")
+        val google = Page(url = "https://www.google.com/", title = "Google", text = "")
 
         val craw: WebCrawler = WebCrawler()
 
         val wikilinks: List<Page> = craw.crawler(wikipedia.url)
-
-        pageRepository.save(wikipedia)
-        pageRepository.save(google)
+        val googleLinks: List<Page> = craw.crawler(google.url)
 
         wikilinks.map {
             link -> pageRepository.save(link)
         }
+
+        googleLinks.map {
+            link -> pageRepository.save(link)
+        }
+
     }
 }

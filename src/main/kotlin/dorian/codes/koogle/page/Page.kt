@@ -9,7 +9,7 @@ class Page(
         var url: String,
         var title: String,
         var text: String,
-        var slug: String = title.toSlug(),
+        var slug: String = url.extract(),
         var type: PageType? = null,
         @Id @GeneratedValue var id: Long? = null
 )
@@ -19,6 +19,10 @@ private fun String.toSlug() = toLowerCase()
         .split(" ")
         .joinToString("-")
         .replace("-+".toRegex(), "-")
+
+private fun String.extract() = split(".").filterNot { s -> stopWords.contains(s)}[0]
+
+private val stopWords: Set<String> = setOf("www", "com", "https://", "http://", "https://www", "http://www")
 
 enum class PageType{
     LINK, MEDIA, IMPORT

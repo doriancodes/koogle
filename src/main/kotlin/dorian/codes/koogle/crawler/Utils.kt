@@ -4,6 +4,7 @@ import dorian.codes.koogle.page.Page
 import dorian.codes.koogle.page.PageType
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
+import java.net.URL
 
 private val maps: Map<PageType, String> = mapOf(PageType.LINK to "a[href]", PageType.IMPORT to "link[href]")
 
@@ -41,6 +42,28 @@ private fun renderPage(pageType: PageType, document: Document): List<Page> {
     }
 }
 
+fun validateUrl(url: String): String {
+
+    val strictPattern = "^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]".toRegex()
+    val strictPattern2 = "^(http?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]".toRegex()
+    val pattern1 = "^[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]".toRegex()
+
+    return when {
+        strictPattern.matches(url) -> {
+            url
+        }
+        strictPattern2.matches(url) -> {
+            url.replace("http", "https")
+
+        }
+        pattern1.matches(url) -> {
+            "http://$url"
+        }
+        else -> {
+            ""
+        }
+    }
+}
 
 fun getDocument(url: String): Document {
     return Jsoup.connect(url).get()

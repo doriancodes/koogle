@@ -1,5 +1,6 @@
 package dorian.codes.koogle.api
 
+import dorian.codes.koogle.crawler.validateUrl
 import dorian.codes.koogle.page.Page
 import dorian.codes.koogle.page.PageRepository
 import org.springframework.stereotype.Controller
@@ -17,11 +18,15 @@ class HomeController(private val pageRepository: PageRepository) {
     fun home(@RequestParam(value = "url", required = false) url: String?, model: Model): String {
         model["title"] = "Koogle Home"
         if (url != null){
-            model["pages"] = pageRepository.findAll().filter { page -> page.url == url }.map { it.render() }
+            //val validatedUrl: String = validateUrl(url)
+            model["pages"] = pageRepository.findAll().filter { page -> page.slug == url.extract() }.map { it.render() }
             return "results"
         }
         return "home"
     }
+
+    private fun String.extract() = split(".").filterNot { s -> stopWords.contains(s)}[0]
+    private val stopWords: Set<String> = setOf("www", "com", "https://", "http://", "https://www", "http://www")
 
     fun Page.render() = RenderedPage(
             slug,

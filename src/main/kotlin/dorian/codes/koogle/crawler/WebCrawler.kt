@@ -11,7 +11,8 @@ class WebCrawler {
 
     fun crawler(url: String): List<Page> {
         print("Fetching %s...", url)
-        val doc: Document = Jsoup.connect(url).get()
+        val validatedUrl: String = validateUrl(url)
+        val doc: Document = Jsoup.connect(validatedUrl).get()
 
         return extractPages(doc);
     }
