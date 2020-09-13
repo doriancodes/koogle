@@ -1,6 +1,6 @@
-package dorian.codes.koogle.urls
+package dorian.codes.koogle.models.urls
 
-import dorian.codes.koogle.pages.UrlType
+import dorian.codes.koogle.models.UrlType
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
