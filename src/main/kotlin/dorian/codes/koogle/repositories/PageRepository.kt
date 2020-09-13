@@ -1,4 +1,4 @@
-package dorian.codes.koogle.models.pages
+package dorian.codes.koogle.repositories
 
 import dorian.codes.koogle.models.Page
 import org.springframework.data.repository.CrudRepository

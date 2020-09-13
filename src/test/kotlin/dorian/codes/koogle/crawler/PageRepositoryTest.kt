@@ -1,7 +1,7 @@
 package dorian.codes.koogle.crawler
 
-import dorian.codes.koogle.pages.Page
-import dorian.codes.koogle.pages.PageRepository
+import dorian.codes.koogle.models.Page
+import dorian.codes.koogle.repositories.PageRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

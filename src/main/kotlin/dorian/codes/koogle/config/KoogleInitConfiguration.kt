@@ -1,10 +1,12 @@
 package dorian.codes.koogle.config
 
-import dorian.codes.koogle.pages.Page
-import dorian.codes.koogle.pages.PageRepository
+import dorian.codes.koogle.models.Page
+import dorian.codes.koogle.repositories.PageRepository
 import dorian.codes.koogle.crawler.WebCrawler
-import dorian.codes.koogle.urls.Url
-import dorian.codes.koogle.urls.UrlRepository
+import dorian.codes.koogle.models.Url
+import dorian.codes.koogle.repositories.UrlRepository
+import dorian.codes.koogle.services.UrlService
+
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -13,7 +15,7 @@ import org.springframework.context.annotation.Configuration
 class KoogleInitConfiguration {
 
     @Bean
-    fun databaseInitializer(urlRepository: UrlRepository, pageRepository: PageRepository) = ApplicationRunner {
+    fun databaseInitializer(urlService: UrlService, pageRepository: PageRepository) = ApplicationRunner {
         val wikipedia = Page(url = "https://www.wikipedia.org/", title = "Wikipedia", text = "")
         val google = Page(url = "https://www.google.com/", title = "Google", text = "")
 
@@ -23,11 +25,11 @@ class KoogleInitConfiguration {
         val googleLinks: List<Url> = craw.crawler(google.url)
 
         val wikiUrls: List<Url> = wikilinks.map { link ->
-            urlRepository.save(link)
+            urlService.save(link)
         }
 
         val googleUrls = googleLinks.map { link ->
-            urlRepository.save(link)
+            urlService.save(link)
         }
 
         wikiUrls.forEach { url ->

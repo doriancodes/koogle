@@ -1,7 +1,7 @@
 package dorian.codes.koogle.crawler
 
-import dorian.codes.koogle.pages.UrlType
-import dorian.codes.koogle.urls.Url
+import dorian.codes.koogle.models.UrlType
+import dorian.codes.koogle.models.Url
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 

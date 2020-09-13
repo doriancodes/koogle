@@ -1,7 +1,7 @@
-package dorian.codes.koogle.api
+package dorian.codes.koogle.controllers
 
-import dorian.codes.koogle.pages.Page
-import dorian.codes.koogle.pages.PageRepository
+import dorian.codes.koogle.models.Page
+import dorian.codes.koogle.services.PageService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
 @RequestMapping("/")
-class HomeController(private val pageRepository: PageRepository) {
+class HomeController(private val pageService: PageService) {
     @GetMapping
     fun home(@RequestParam(value = "url", required = false) url: String?, model: Model): String {
         model["title"] = "Koogle Home"
         if (url != null) {
-            //val validatedUrl: String = validateUrl(url)
-            model["pages"] = pageRepository.findAll().filter { page -> page.slug == url.extract() }.map { it.render() }
+            model["pages"] = pageService.findAll().filter { page -> page.slug == url.extract() }.map { it.render() }
             return "results"
         }
         return "home"
