@@ -9,7 +9,7 @@ import java.util.*
 class UrlService(private val urlRepository: UrlRepository) {
     fun save(url: Url): Url {
 
-        return if (urlRepository.findByMainUrl(url.mainUrl) != null) {
+        return if (urlRepository.findByMainUrl(url.mainUrl) == null) {
             urlRepository.save(url)
 
         } else {

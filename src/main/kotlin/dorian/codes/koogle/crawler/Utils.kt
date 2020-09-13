@@ -34,6 +34,7 @@ private fun findUrls(urlType: UrlType, document: Document, url: String): List<Ur
 
 }
 
+
 fun validateUrl(url: String): String {
 
     val strictPattern = "^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]".toRegex()

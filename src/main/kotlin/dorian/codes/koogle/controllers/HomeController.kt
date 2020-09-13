@@ -17,7 +17,7 @@ class HomeController(private val pageService: PageService) {
     fun home(@RequestParam(value = "url", required = false) url: String?, model: Model): String {
         model["title"] = "Koogle Home"
         if (url != null) {
-            model["pages"] = pageService.findAll().filter { page -> page.slug == url.extract() }.map { it.render() }
+            model["pages"] = pageService.findAll().filter { page -> page.url.extract() == url.extract() }.map { it.render() }
             return "results"
         }
         return "home"

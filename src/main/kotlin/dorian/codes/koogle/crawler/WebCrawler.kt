@@ -5,8 +5,10 @@ import dorian.codes.koogle.models.Url
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
+import org.springframework.stereotype.Component
 
 
+@Component
 class WebCrawler {
 
     fun crawler(url: String): List<Url> {
