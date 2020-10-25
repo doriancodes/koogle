@@ -9,7 +9,7 @@ Demo Search Engine built in Kotlin and Spring
 3. Ranking
 4. Query Serving
 
-###TODO 
+### TODO 
 
 - Fix and refine search
 - Find a way to represent families of urls
