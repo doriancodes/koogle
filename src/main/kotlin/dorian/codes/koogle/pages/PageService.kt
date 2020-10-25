@@ -1,7 +1,5 @@
-package dorian.codes.koogle.services
+package dorian.codes.koogle.pages
 
-import dorian.codes.koogle.models.Page
-import dorian.codes.koogle.repositories.PageRepository
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,12 +1,7 @@
-package dorian.codes.koogle.controllers
+package dorian.codes.koogle.searchconsole
 
 import dorian.codes.koogle.crawler.WebCrawler
-import dorian.codes.koogle.models.Page
-import dorian.codes.koogle.models.Url
-import dorian.codes.koogle.models.UrlType
-import dorian.codes.koogle.services.PageService
-import dorian.codes.koogle.services.SearchConsoleService
-import dorian.codes.koogle.services.UrlService
+import dorian.codes.koogle.pages.Page
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set

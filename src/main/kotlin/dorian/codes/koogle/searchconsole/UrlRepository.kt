@@ -1,6 +1,5 @@
-package dorian.codes.koogle.repositories
+package dorian.codes.koogle.searchconsole
 
-import dorian.codes.koogle.models.Url
 import org.springframework.data.repository.CrudRepository
 
 interface UrlRepository : CrudRepository<Url, Long> {

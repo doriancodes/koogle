@@ -1,9 +1,9 @@
-package dorian.codes.koogle.services
+package dorian.codes.koogle.searchconsole
 
 import dorian.codes.koogle.crawler.WebCrawler
-import dorian.codes.koogle.models.Page
-import dorian.codes.koogle.models.Url
-import dorian.codes.koogle.models.UrlType
+import dorian.codes.koogle.pages.Page
+import dorian.codes.koogle.pages.UrlType
+import dorian.codes.koogle.pages.PageService
 import org.springframework.stereotype.Service
 
 @Service
@@ -14,6 +14,8 @@ class SearchConsoleService(
 ) {
 
     fun insertNew(urlString: String): Page {
+
+
 
         val url: Url = Url(urlString, UrlType.LINK) //TODO check how to get the type dynamically
 

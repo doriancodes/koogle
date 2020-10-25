@@ -1,11 +1,10 @@
 package dorian.codes.koogle.config
 
-import dorian.codes.koogle.models.Page
-import dorian.codes.koogle.repositories.PageRepository
+import dorian.codes.koogle.pages.Page
+import dorian.codes.koogle.pages.PageRepository
 import dorian.codes.koogle.crawler.WebCrawler
-import dorian.codes.koogle.models.Url
-import dorian.codes.koogle.repositories.UrlRepository
-import dorian.codes.koogle.services.UrlService
+import dorian.codes.koogle.searchconsole.Url
+import dorian.codes.koogle.searchconsole.UrlService
 
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean

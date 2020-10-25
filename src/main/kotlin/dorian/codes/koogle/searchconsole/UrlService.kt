@@ -1,9 +1,6 @@
-package dorian.codes.koogle.services
+package dorian.codes.koogle.searchconsole
 
-import dorian.codes.koogle.models.Url
-import dorian.codes.koogle.repositories.UrlRepository
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class UrlService(private val urlRepository: UrlRepository) {

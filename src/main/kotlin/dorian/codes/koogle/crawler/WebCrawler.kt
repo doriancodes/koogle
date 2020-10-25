@@ -1,7 +1,7 @@
 package dorian.codes.koogle.crawler
 
-import dorian.codes.koogle.models.Page
-import dorian.codes.koogle.models.Url
+import dorian.codes.koogle.pages.Page
+import dorian.codes.koogle.searchconsole.Url
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
@@ -16,7 +16,7 @@ class WebCrawler {
         val validatedUrl: String = validateUrl(url)
         val doc: Document = Jsoup.connect(validatedUrl).get()
 
-        return extractUrls(doc, url);
+        return extractUrls(doc, url)
     }
 
     fun crawlerDemo(url: String) {

@@ -1,4 +1,4 @@
-package dorian.codes.koogle.models
+package dorian.codes.koogle.pages
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
