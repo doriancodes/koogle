@@ -13,23 +13,23 @@ class SearchConsoleService(
         private val webCrawler: WebCrawler
 ) {
 
-    fun insertNew(urlString: String): Page {
+    fun insertNew(urlString: String) {
 
+        if (Url.isValidUrl(urlString)) {
+            val url: Url = Url(urlString, UrlType.LINK) //TODO check how to get the type dynamically
 
+            urlService.save(url)
 
-        val url: Url = Url(urlString, UrlType.LINK) //TODO check how to get the type dynamically
+            val childrenUrls: List<Url> = webCrawler.crawler(url.mainUrl)
 
-        urlService.save(url)
+            val childrenPages: List<Page> = childrenUrls.map { it -> urlService.save(it) }.map {
+                u -> webCrawler.getContentOfPage(u.mainUrl)
+            }
 
-        val childrenUrls: List<Url> = webCrawler.crawler(url.mainUrl)
+            pageService.saveAll(childrenPages)
 
-        val childrenPages: List<Page> = childrenUrls.map { it -> urlService.save(it) }.map {
-            u -> webCrawler.getContentOfPage(u.mainUrl)
+            pageService.save(webCrawler.getContentOfPage(url.mainUrl))
         }
-
-        pageService.saveAll(childrenPages)
-
-        return pageService.save(webCrawler.getContentOfPage(url.mainUrl))
     }
 
 }
