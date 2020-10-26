@@ -1,1 +1,1 @@
-web: java -jar build/libs/koogle-*-*.jar
+web: java -jar build/libs/koogle-*-*.jar --port $PORT
