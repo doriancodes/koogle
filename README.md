@@ -1,8 +1,6 @@
 # kOOgle
 
-[![Build Status](https://travis-ci.org/doriancodes/koogle.svg?branch=master)](https://travis-ci.org/doriancodes/koogle)
-
-Demo Search Engine built in Kotlin and Spring
+Demo Search Engine built in Kotlin and Spring. Check the live demo app on [heroku](https://koogle-search.herokuapp.com/).
 
 ## Features
 
