@@ -23,6 +23,8 @@ repositories {
 	mavenCentral()
 }
 
+val staging by configurations.creating
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-mustache")
@@ -36,6 +38,8 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
+	staging("com.heroku:webapp-runner-main:9.0.36.1")
+
 }
 
 tasks.withType<Test> {
