@@ -1,1 +1,1 @@
-web: java -jar build/libs/koogle-*-*.jar --port $PORT
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/koogle-0.0.1-SNAPSHOT.jar
