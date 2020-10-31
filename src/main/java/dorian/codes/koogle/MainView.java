@@ -1,4 +1,4 @@
-package com.vaadin.starter.skeleton;
+package dorian.codes.koogle;
 
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
@@ -13,8 +13,7 @@ import com.vaadin.flow.server.PWA;
 /**
  * The main view contains a button and a click listener.
  */
-@Route("vaadin-test")
-@PWA(name = "Project Base for Vaadin", shortName = "Project Base")
+@Route("")
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class MainView extends VerticalLayout {

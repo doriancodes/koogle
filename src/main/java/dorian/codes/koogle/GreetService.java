@@ -1,4 +1,4 @@
-package com.vaadin.starter.skeleton;
+package dorian.codes.koogle;
 
 public class GreetService {
 

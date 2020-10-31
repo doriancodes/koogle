@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/pages")
 class PageController(private val pageService: PageService) {
     @GetMapping
     fun home(@RequestParam(value = "url", required = false) url: String?, model: Model): String {
